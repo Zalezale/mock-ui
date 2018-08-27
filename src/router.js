@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import submit from './views/submitApi.vue'
+import tip from './views/tip.vue'
 
 Vue.use(Router)
 
@@ -9,9 +10,14 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
+      path: '/submit',
       name: 'submit',
       component: submit
+    },
+    {
+      path: '/',
+      name: 'tip',
+      component: tip
     },
     {
       path: '/use',

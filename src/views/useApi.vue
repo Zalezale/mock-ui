@@ -43,7 +43,7 @@ export default {
   data() {
     return {
       form: {
-        webUrl: "http://10.123.0.130:3000/source",
+        webUrl: "",
         methods: "",
         response: "",
         params: [{ name: "", value: "" }]
@@ -88,7 +88,7 @@ export default {
       if ((data = this.form.methods) === "get") {
         this.axios[data](this.form.webUrl + "?" + this.getParames())
           .then(res => {
-            this.form.response = JSON.stringify(res.data);
+            this.form.response = JSON.stringify(res);
             this.$notify({
               title: "成功",
               message: "调用成功",
@@ -104,7 +104,7 @@ export default {
       } else {
         this.axios[data](this.form.webUrl, this.getParames())
           .then(res => {
-            this.form.response = JSON.stringify(res.config.data);
+            this.form.response = JSON.stringify(res.data);
             this.$notify({
               title: "成功",
               message: "调用成功",
@@ -119,6 +119,9 @@ export default {
           });
       }
     }
+  },
+  created:function(){
+    this.form.webUrl = localStorage.getItem('webUrl')
   }
 };
 </script>

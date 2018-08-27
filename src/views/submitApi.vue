@@ -4,7 +4,7 @@
     <el-upload
   class="upload-demo"
   style="width:400px;"
-  :action="actionTxt"
+  :action="webUrl"
   :on-preview="handlePreview"
   :on-remove="handleRemove"
   :on-success="handleSuccess"
@@ -19,7 +19,7 @@
      <el-upload
   class="upload-demo"
   style="width:400px;"
-  :action="actionPic"
+  :action="webUrl"
   :on-preview="handlePreview"
   :on-remove="handleRemove"
   :on-success="handleSuccess"
@@ -39,8 +39,7 @@
 export default {
   data() {
     return {
-      actionTxt: "http://127.0.0.1:3000/json/iii",
-      actionPic: "http://127.0.0.1:3000/img/iii"
+      webUrl:'',
     };
   },
   methods: {
@@ -59,6 +58,9 @@ export default {
     handleError(err) {
        this.$message.error(err);
     }
+  },
+  created(){
+    this.webUrl = 'http://127.0.0.1:3000/'||localStorage.getItem('webUrl')
   }
 };
 </script>
